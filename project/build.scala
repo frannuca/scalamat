@@ -1,5 +1,5 @@
 import sbt._
-import Keys._
+import sbt.Keys._
 
 
 object BuildSettings {
@@ -23,6 +23,8 @@ object Resolvers {
 
 object Dependencies {
      val actors =  "com.typesafe.akka" %% "akka-actor" % "2.2.3"
+  val scalaSwing = "org.scala-lang" %  "scala-swing"  % BuildSettings.buildScalaVersion
+
 }
 
 object ScalaMatBuild extends Build {
@@ -36,7 +38,7 @@ object ScalaMatBuild extends Build {
   lazy val scalaMatPrj = Project (
     "scalamat",
     file ("."),
-    settings = buildSettings++ Seq (resolvers :=  Seq(typesafe), libraryDependencies ++=Seq(actors))
+    settings = buildSettings++ Seq (resolvers :=  Seq(typesafe), libraryDependencies ++=Seq(actors,scalaSwing))
 
   ) //aggregate (optimizer,ia, org.fjn.org.fjn.org.fjn.pythia.pricers)
 
