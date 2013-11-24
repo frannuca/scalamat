@@ -25,7 +25,7 @@
 [0m[[0mdebug[0m] [0m	found com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@238587d3[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@4a8fa93c[0m
 [0m[[0minfo[0m] [0mResolving commons-io#commons-io;2.0.1 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: commons-io#commons-io;2.0.1 {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: commons-io#commons-io;2.0.1[0m
@@ -40,9 +40,9 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies default#scalamat-build;0.1-SNAPSHOT->com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@59d2e131[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@527b280[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@23be8609[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@7137f424[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->master][0m
@@ -53,11 +53,11 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies default#scalamat-build;0.1-SNAPSHOT->com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@2a4c4d05[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@2c013c6a[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@775498f4[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@52569b8[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@5305f860[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@5b3fb1ab[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->master][0m
@@ -65,7 +65,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for default#scalamat-build;0.1-SNAPSHOT [provided][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies default#scalamat-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [provided->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.2 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@3b7fa1d[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@4bc84a72[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.2[0m
 [0m[[0mdebug[0m] [0m	typesafe-ivy-releases: revision in cache: org.scala-lang#scala-library;2.10.2[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.2 in sbt-chain[0m
@@ -622,13 +622,13 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies default#scalamat-build;0.1-SNAPSHOT->com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@77e9b6d6[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@2591e0c9[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@10e2d91b[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@c3cbf64[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@1d1b8446[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@68394482[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@79891e97[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@7c0e843[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->master][0m
@@ -972,13 +972,13 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies default#scalamat-build;0.1-SNAPSHOT->com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@912ba7b[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@343e4e76[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@2c90e5e4[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@66913fc5[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@5ce4f297[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@49f1d31e[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@3af2c726[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@235b7c7f[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->master][0m
@@ -991,17 +991,17 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies default#scalamat-build;0.1-SNAPSHOT->com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@1211d761[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@72dad7f9[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@51532a8b[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@7d995757[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@2b0e3563[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@5e35512c[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@31d30caa[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@7e645005[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@16e48674[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@6bc1b916[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.10.3 {scala-tool=[default, optional(default)]}[0m
-[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@3b7fa1d => sbt.ivyint.MergedDescriptors@75373569[0m
+[0m[[0mdebug[0m] [0mdependency descriptor has been mediated: sbt.ivyint.MergedDescriptors@4bc84a72 => sbt.ivyint.MergedDescriptors@7b5e8a9e[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.github.mpeltonen#sbt-idea;1.6.0-SNAPSHOT->commons-io#commons-io;2.0.1 [compile->master][0m
@@ -1440,7 +1440,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.0!apply-macro.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.2!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 4634ms :: artifacts dl 114ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 3788ms :: artifacts dl 89ms[0m
 [0m[[0mdebug[0m] [0m	report for default#scalamat-build;0.1-SNAPSHOT compile produced in C:\code\scala\scalamat\project\target\resolution-cache\reports\default-scalamat-build-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#scalamat-build;0.1-SNAPSHOT runtime produced in C:\code\scala\scalamat\project\target\resolution-cache\reports\default-scalamat-build-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#scalamat-build;0.1-SNAPSHOT test produced in C:\code\scala\scalamat\project\target\resolution-cache\reports\default-scalamat-build-test.xml[0m
@@ -1454,5 +1454,5 @@
 [0m[[0mdebug[0m] [0m	report for default#scalamat-build;0.1-SNAPSHOT docs produced in C:\code\scala\scalamat\project\target\resolution-cache\reports\default-scalamat-build-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#scalamat-build;0.1-SNAPSHOT pom produced in C:\code\scala\scalamat\project\target\resolution-cache\reports\default-scalamat-build-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#scalamat-build;0.1-SNAPSHOT scala-tool produced in C:\code\scala\scalamat\project\target\resolution-cache\reports\default-scalamat-build-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (4634ms resolve - 114ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (3788ms resolve - 89ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m
