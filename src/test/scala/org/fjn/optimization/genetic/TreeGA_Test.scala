@@ -32,7 +32,7 @@ object TreeGA_Test  {
       for (i <- 0 until 100) {
       talg += 3;
       val res = talg.storage.getBest (1);
-      print ("iter=" + talg.iterations.toString + " ---> ")
+      print ("numberOfIterations=" + talg.iterations.toString + " ---> ")
       for (k <- 0.until (res.size) ) {
       res (k).chr.getValue ().foreach (x => {
       print (x + ";")

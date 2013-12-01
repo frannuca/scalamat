@@ -8,6 +8,17 @@ import scala.util.Random
 import com.sun.org.apache.bcel.internal.generic.ClassObserver
 import org.fjn.matrix
 
+object MatrixExtensions{
+
+  implicit def toMatrix(s:Seq[Double])=new{
+    def toMatrix={
+      val m = new Matrix[Double](s.length,1)
+      m <= s
+      m
+    }
+
+  }
+}
 
 class Matrix[T1](nRows: Int, nCols: Int, isRowMajor: Boolean = false)(implicit m2: Manifest[T1], implicit val m: Fractional[T1])
 extends Serializable{
@@ -16,6 +27,7 @@ extends Serializable{
   val isConfiguredAsRowMajor = isRowMajor
 
   type DataType = T1
+
 
   def <=(x: Seq[T1]): Matrix[T1] = {
     require(x.length == this.numberRows && this.numberCols == 1)
@@ -203,7 +215,7 @@ extends Serializable{
   }
 
 
-  def /(a: T1): Matrix[T1] = {
+  def /[T2<%T1](a: T2): Matrix[T1] = {
 
     val rMatrix: Matrix[T1] = new Matrix[T1](this.numberRows, this.numberCols, isConfiguredAsRowMajor);
     var i = 0
@@ -216,7 +228,7 @@ extends Serializable{
   }
 
 
-  def *(a: T1): Matrix[T1] = {
+  def *[T2<%T1](a: T2): Matrix[T1] = {
 
     val rMatrix: Matrix[T1] = new Matrix[T1](this.numberRows, this.numberCols, isConfiguredAsRowMajor);
     var i = 0
@@ -493,6 +505,7 @@ extends Serializable{
 
     r
   }
+
 
   /**
    * apply a matrix mask to this matrix. A mask operation consist on multiplying each position in this matrix with
