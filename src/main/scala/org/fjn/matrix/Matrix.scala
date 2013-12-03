@@ -524,6 +524,14 @@ extends Serializable{
 
   }
 
+
+  def diag:Seq[T1]={
+
+    (for(i <- 0 until (this.numberCols min this.numberRows)) yield {
+      this(i,i)
+    }).toSeq
+  }
+
 }
 
 

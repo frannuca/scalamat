@@ -1,22 +1,21 @@
 package org.fjn.finance.bs
 
 
-trait BlackScholesFormula {
-
+object BlackScholesFormula{
   sealed trait BSPayoffType { def name: String }
   case object BS_CALL extends BSPayoffType { val name = "CALL" }
   case object BS_PUT extends BSPayoffType { val name = "PUT" }
+}
+trait BlackScholesFormula {
+
+  import BlackScholesFormula._
 
 
-  val optionType:BlackScholesFormula#BSPayoffType
-
-
-
-  def npv(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double):Double
-  def delta(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double):Double
-  def gamma(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double):Double
-  def vega(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double):Double
-  def theta(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double):Double
-  def rho(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double):Double
+  def npv(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double,optionType:BlackScholesFormula.BSPayoffType):Double
+  def delta(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double,optionType:BlackScholesFormula.BSPayoffType):Double
+  def gamma(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double,optionType:BlackScholesFormula.BSPayoffType):Double
+  def vega(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double,optionType:BlackScholesFormula.BSPayoffType):Double
+  def theta(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double,optionType:BlackScholesFormula.BSPayoffType):Double
+  def rho(forward:Double, t:Double,T:Double,K:Double,s:Double,rf:Double,optionType:BlackScholesFormula.BSPayoffType):Double
 
 }

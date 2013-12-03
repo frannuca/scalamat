@@ -1,6 +1,9 @@
 package org.fjn.finance.bs
 
-case class BS76(optionType: BlackScholesFormula#BSPayoffType) extends BlackScholesFormula {
+object Black76 extends BlackScholesFormula {
+
+
+  import BlackScholesFormula._
 
   private val stdDist = new org.apache.commons.math3.distribution.NormalDistribution()
   private val PHI = (x:Double) => stdDist.cumulativeProbability(x)
@@ -18,23 +21,8 @@ case class BS76(optionType: BlackScholesFormula#BSPayoffType) extends BlackSchol
 
     (d1,d2,dt)
   }
-   def call(ft:Double, t:Double,T:Double,K:Double,s:Double,rf:Double):Double={
 
-
-     val (d1,d2,dt) = computeAuxiliary(ft,t,T,K,s)
-     math.exp(-rf*dt)*(ft*PHI(d1)-K*PHI(d2))
-
-   }
-
-  def put(ft:Double, t:Double,T:Double,K:Double,s:Double,rf:Double):Double={
-    val (d1,d2,dt) = computeAuxiliary(ft,t,T,K,s)
-    math.exp(-rf*dt)*(K*PHI(-d2)-ft*PHI(-d1))
-
-  }
-
-
-
-  def npv(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double): Double = {
+  def npv(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double,optionType:BlackScholesFormula.BSPayoffType): Double = {
 
     val (d1,d2,dt) = computeAuxiliary(forward,t,T,K,s)
     optionType match{
@@ -43,7 +31,7 @@ case class BS76(optionType: BlackScholesFormula#BSPayoffType) extends BlackSchol
     }
   }
 
-  def delta(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double): Double ={
+  def delta(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double,optionType:BlackScholesFormula.BSPayoffType): Double ={
     val (d1,d2,dt) = computeAuxiliary(forward,t,T,K,s)
     optionType match{
       case  BS_CALL => math.exp(-rf*dt)*PHI(d1)
@@ -51,7 +39,7 @@ case class BS76(optionType: BlackScholesFormula#BSPayoffType) extends BlackSchol
     }
   }
 
-  def gamma(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double): Double = {
+  def gamma(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double,optionType:BlackScholesFormula.BSPayoffType): Double = {
     val (d1,d2,dt) = computeAuxiliary(forward,t,T,K,s)
 
     math.exp(-rf*dt)*PHI(d1)/(forward*s*math.sqrt(dt))
@@ -59,13 +47,13 @@ case class BS76(optionType: BlackScholesFormula#BSPayoffType) extends BlackSchol
 
   }
 
-  def vega(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double): Double = {
+  def vega(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double,optionType:BlackScholesFormula.BSPayoffType): Double = {
 
     val (d1,d2,dt) = computeAuxiliary(forward,t,T,K,s)
     forward* math.exp(-rf*dt)  *PHI(d1)*math.sqrt(dt)
   }
 
-  def theta(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double): Double = {
+  def theta(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double,optionType:BlackScholesFormula.BSPayoffType): Double = {
     val (d1,d2,dt) = computeAuxiliary(forward,t,T,K,s)
 
     val a = math.exp(-rf*dt)
@@ -84,7 +72,7 @@ case class BS76(optionType: BlackScholesFormula#BSPayoffType) extends BlackSchol
 
   }
 
-  def rho(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double): Double = {
+  def rho(forward: Double, t: Double, T: Double, K: Double, s: Double, rf: Double,optionType:BlackScholesFormula.BSPayoffType): Double = {
     val (d1,d2,dt) = computeAuxiliary(forward,t,T,K,s)
 
     optionType match{
