@@ -32,15 +32,8 @@ object Estimators {
     val N= x.numberRows
     val K = x.numberCols
 
-   val cov= new Matrix[Double](x.numberCols,x.numberCols)
+   (x.transpose * x)/(K-1)
 
-    for{i <- 0 until K
-        j <- 0 until K
-    }{
-      cov(i,j)= ((x.sub(0 until N,Seq(i)) - muX(i,0)) * (x.sub(0 until N,Seq(j)) - muX(j,0)).transpose)(0,0)
-    }
-
-    cov * 1.0/(x.numberRows - 1.0)
   }
 
   def correlation(x:Matrix[Double]):Matrix[Double]={
