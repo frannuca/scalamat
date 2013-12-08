@@ -1,6 +1,6 @@
 package org.fjn.threading
 
-import akka.actor.{Actor, ActorRef, Props, ActorSystem}
+import akka.actor._
 import akka.routing.RoundRobinRouter
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable
@@ -47,7 +47,10 @@ class Scheduler[A,B](action:(A)=>B,numberOfWorker:Int,listener:ActorRef) extends
 
 
   val taskRouter = context.actorOf(
-    Props(classOf[Worker[A,B]],action,listener).withRouter(RoundRobinRouter(numberOfWorker)), name = "router")
+    Props(classOf[Worker[A,B]],action,listener)
+      .withRouter(RoundRobinRouter(numberOfWorker)), name = "router")
+
+
 
   def receive={
     case x:A=>

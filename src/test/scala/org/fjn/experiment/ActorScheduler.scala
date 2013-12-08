@@ -8,6 +8,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import scala.collection.immutable.IndexedSeq
 import org.fjn.threading.{Semaphore, SchedulerFactory}
+import scala.collection.mutable
 
 /**
  * Created by fran on 07.12.13.
@@ -23,7 +24,20 @@ class SoupWorker(matrix:Array[Array[Char]]){
   val N=matrix.length
   val M= matrix.head.length
 
+  val cache =  new mutable.HashMap[Char,ListBuffer[(Int,Int)]]()
+  (for{i <- 0 until N
+                  j <- 0 until M} yield{
+    var char = matrix(i)(j)
+    if(!cache.contains(char))
+      cache(char) = new ListBuffer[(Int,Int)]
+
+     cache(char) += ((i,j))
+
+  })
+
   def solve(msg:CellResolver): ListBuffer[(Int, Int)] ={
+
+
     val history = new ListBuffer[(Int,Int)]
     resolve(msg.word.toCharArray,(msg.i,msg.j),history)
     history
@@ -71,8 +85,8 @@ class SoupWorker(matrix:Array[Array[Char]]){
 
 object SoupLetterSolver extends App{
 
-  val N=3000
-  val M = 3000
+  val N=300
+  val M = 300
   val random = new scala.util.Random
   val mm: Array[Array[Char]] =
     (for {
