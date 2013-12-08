@@ -105,18 +105,11 @@ class Soup(matrix: Array[Array[Char]]) {
 
 object test extends App {
 
-  def time[T](str: String)(thunk: => T): T = {
-    print(str + "... ")
-    val t1 = System.currentTimeMillis
-    val x = thunk
-    val t2 = System.currentTimeMillis
-    println((t2 - t1) + " msecs")
-    x
-  }
+
   val random = new scala.util.Random
   val mm: Array[Array[Char]] =
     (for {
-      i <- 0 until 1000
+      i <- 0 until 10000
     } yield {
       (for (j <- 0 until 10000) yield {
         (random.nextInt(256)).toChar
@@ -155,14 +148,19 @@ object test extends App {
   mm(17)(26) = 's'
 
   val s = new Soup(mm)
-  time("time single threaded"){
-  val aa = s.containsWordSingleThreaded("salsaparatodos")
-  println(aa.mkString("\n"))
+
+  import org.fjn.utils.Timer._
+  for(k <- 0 until 10){
+    time("time single threaded"){
+      val aa = s.containsWordSingleThreaded("salsaparatodos")
+      println(aa.mkString("\n"))
+    }
+
+//    time("time multi threaded"){
+//      val aa = s.containsWord("salsaparatodos")
+//      println(aa.mkString("\n"))
+//    }
   }
 
-  time("time multi threaded"){
-    val aa = s.containsWord("salsaparatodos")
-    println(aa.mkString("\n"))
-  }
 
 }
