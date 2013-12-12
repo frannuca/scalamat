@@ -17,8 +17,10 @@ object BuildSettings {
 }
 
 object Resolvers {
-     val typesafe = "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
 
+     val typesafe =   "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+     val sonatype1 =  "Sonatype OSS Releases"  at "http://oss.sonatype.org/content/repositories/releases/"
+     val sonatype2 =  "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 }
 
 object Dependencies {
@@ -26,6 +28,7 @@ object Dependencies {
   val scalaSwing = "org.scala-lang" %  "scala-swing"  % BuildSettings.buildScalaVersion
   val apacheMath =  "org.apache.commons" % "commons-math3" % "3.0"
   val jFree = "jfree" % "jfreechart" % "1.0.13"
+  val shapeless =  "com.chuusai" % "shapeless" % "2.0.0-M1" cross CrossVersion.full
 
 }
 
@@ -40,7 +43,7 @@ object ScalaMatBuild extends Build {
   lazy val scalaMatPrj = Project (
     "scalamat",
     file ("."),
-    settings = buildSettings++ Seq (resolvers :=  Seq(typesafe), libraryDependencies ++=Seq(actors,scalaSwing,apacheMath,jFree))
+    settings = buildSettings++ Seq (resolvers :=  Seq(typesafe,sonatype1,sonatype2), libraryDependencies ++=Seq(actors,scalaSwing,apacheMath,jFree,shapeless))
 
   ) //aggregate (optimizer,ia, org.fjn.org.fjn.org.fjn.pythia.pricers)
 

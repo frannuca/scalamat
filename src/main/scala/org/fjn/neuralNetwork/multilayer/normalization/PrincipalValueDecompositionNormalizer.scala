@@ -24,7 +24,7 @@ abstract class PrincipalValueDecompositionNormalizer(originalTrainingSet: Array[
 
     for{i <- originalTrainingSet.indices
         j <- originalTrainingSet(i).getArray().indices}{
-      X.set(j,i,originalTrainingSet(i)(j,0)-mean(j,0))
+      X(j,i) = originalTrainingSet(i)(j,0)-mean(j,0)
     }
 
     val Cx = (X*X.transpose)  * 1.0 / (X.numberCols - 1.0)
