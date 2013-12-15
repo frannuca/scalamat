@@ -487,6 +487,7 @@ extends Serializable{
     (eigenMatrixD, eigenMatrixV)
   }
 
+
   def cholesky: Matrix[T1] = {
 
     val A = toJama

@@ -14,10 +14,11 @@ object Estimators {
   def mean(x:Matrix[Double]):Matrix[Double]={
 
     (for(j <- 0 until x.numberCols)yield{
-       x.sub(0 until x.numberRows,Seq(j)).getArray().foldLeft(0d)((acc,r)=> acc + r) * 1.0/x.numberRows
-     }).toSeq.toMatrix
+       x.sub(0 until x.numberRows,Seq(j))
+     }).foldLeft(new Matrix[Double](x.numberRows,1))((acc,r)=> acc + r) * 1.0/x.numberCols
 
   }
+
 
   /**
    * computes the covariance matrix given two matrix of N samples x K independent variables
@@ -27,12 +28,18 @@ object Estimators {
   def covariance(x:Matrix[Double]):Matrix[Double]={
 
 
+    val x0 = x.clone()
     val muX = mean(x) // K x 1
 
     val N= x.numberRows
-    val K = x.numberCols
+    val M = x.numberCols
 
-   (x.transpose * x)/(K-1)
+    for{ j <- 0 until M
+         i <- 0 until N}{
+        x0(i,j)=x(i,j)-muX(i,0)
+    }
+
+   (x0 * x0.transpose)/(M-1)
 
   }
 

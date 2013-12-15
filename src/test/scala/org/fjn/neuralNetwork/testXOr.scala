@@ -30,11 +30,11 @@ object NN_test extends  App{
     val ffnn = new FeedForwardNetwork(
       nnDatax =data,
        lr0x = .1,
-      momentum0x = 0.007
+      momentum0x = 0.05
     )
 
 
-    val err = ffnn.solve(20000)
+    val err = ffnn.solve(10000)
 
     println("total Err"+err.toString)
 

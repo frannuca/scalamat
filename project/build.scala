@@ -29,6 +29,7 @@ object Dependencies {
   val apacheMath =  "org.apache.commons" % "commons-math3" % "3.0"
   val jFree = "jfree" % "jfreechart" % "1.0.13"
   val shapeless =  "com.chuusai" % "shapeless" % "2.0.0-M1" cross CrossVersion.full
+  val specs2 =  "org.specs2" %% "specs2" % "2.3.6" % "test"
 
 }
 
@@ -43,8 +44,7 @@ object ScalaMatBuild extends Build {
   lazy val scalaMatPrj = Project (
     "scalamat",
     file ("."),
-    settings = buildSettings++ Seq (resolvers :=  Seq(typesafe,sonatype1,sonatype2), libraryDependencies ++=Seq(actors,scalaSwing,apacheMath,jFree,shapeless))
-
+    settings = buildSettings++ Seq (resolvers :=  Seq(typesafe,sonatype1,sonatype2), libraryDependencies ++=Seq(specs2,actors,scalaSwing,apacheMath,jFree,shapeless))
   ) //aggregate (optimizer,ia, org.fjn.org.fjn.org.fjn.pythia.pricers)
 
 
