@@ -14,7 +14,7 @@ import org.fjn.neuralNetwork.multilayer.activation.Sigmoidea
  */
 object normalizationTest extends App  {
 
-  val originalTrainingSet= Array(Seq(-24.0,-24.0).toMatrix,Seq(-23.0,-23.0).toMatrix,Seq(0.00,0.00).toMatrix,Seq(24.0,24.0).toMatrix)
+  val originalTrainingSet= Array(Seq(-24.0,-24.7).toMatrix,Seq(-23.2,-23.0).toMatrix,Seq(-23.75,-23.5).toMatrix,Seq(0.10,0.00).toMatrix,Seq(1024.2,1024.5).toMatrix)
   val triggerFunc = new Sigmoidea()
   val normalizer = new PrincipalValueDecompositionNormalizer(originalTrainingSet,triggerFunc.trigger)
 

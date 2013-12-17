@@ -45,7 +45,10 @@ class PrincipalValueDecompositionNormalizer(val originalTrainingSet: Array[Matri
   /**
    * eigen vectors for the covariance matrix...
    */
-  private val P = Cxx.eigVectors._2.transpose
+  private val eig = Cxx.eigVectors
+  private val P = eig._2.transpose
+  private val lambda = eig._1
+
 
   private val Pinv = P.transpose
 
@@ -56,11 +59,11 @@ class PrincipalValueDecompositionNormalizer(val originalTrainingSet: Array[Matri
    * @return
    */
   private def intoPCA(x:Matrix[Double])={
-    P * (x - mean)
+    (P * (x - mean))
   }
 
   private def fromPCA(x:Matrix[Double])={
-    Pinv * x + mean
+    (Pinv * x) + mean
   }
 
 
@@ -77,19 +80,12 @@ class PrincipalValueDecompositionNormalizer(val originalTrainingSet: Array[Matri
 
   val scaling = {
 
-    val subCols= (0 until normalizedSamples.numberCols).toSeq
+    val cpy = lambda.clone()
+    for(i <- 0 until cpy.numberCols)
+    cpy(i,i) ={if(cpy(i,i) != 0) 1.0/math.sqrt(cpy(i,i)) else 1.0}
 
-    val factors = (for(i <- 0 until normalizedSamples.numberRows) yield
-    {
-      val s = normalizedSamples.sub(Seq(i),subCols).getArray()
-      math.abs(s.max) max  math.abs(s.min)
-    }).toSeq
+    cpy
 
-    val m = new Matrix[Double](factors.length,factors.length)
-    for( i <- 0  until m.numberRows){
-      m(i,i)= if(factors(i)!=0) 1.0/factors(i) else 1.0
-    }
-    m
   }
 
   val inv_scaling = {
@@ -107,13 +103,15 @@ class PrincipalValueDecompositionNormalizer(val originalTrainingSet: Array[Matri
 
   def normalise(x: Matrix[Double]) = {
     val y = (intoPCA(x))
-    val z=scaling *y
+    val ybis = fromPCA(y)
+    val z= scaling * y
     z
   }
 
   def deNormalise(x: Matrix[Double]) = {
 
-    fromPCA(inv_scaling * x )
+
+     fromPCA( inv_scaling * x )
 
   }
 
