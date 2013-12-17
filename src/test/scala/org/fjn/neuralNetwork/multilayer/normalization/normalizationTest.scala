@@ -14,14 +14,14 @@ import org.fjn.neuralNetwork.multilayer.activation.Sigmoidea
  */
 object normalizationTest extends App  {
 
-  val originalTrainingSet= Array(Seq(0.01,0.01).toMatrix,Seq(20.0,20.0).toMatrix,Seq(14.0,15.0).toMatrix,Seq(24.0,22.0).toMatrix)
+  val originalTrainingSet= Array(Seq(-24.0,-24.0).toMatrix,Seq(-23.0,-23.0).toMatrix,Seq(0.00,0.00).toMatrix,Seq(24.0,24.0).toMatrix)
   val triggerFunc = new Sigmoidea()
   val normalizer = new PrincipalValueDecompositionNormalizer(originalTrainingSet,triggerFunc.trigger)
 
 
 
   originalTrainingSet.foreach(p => {
-    println("from %s to %s".format(p,normalizer.normalise(p)))
+    println("from %s to %s -> back to %s ".format(p,normalizer.normalise(p),normalizer.deNormalise(normalizer.normalise(p))))
   })
 
 

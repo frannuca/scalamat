@@ -9,7 +9,7 @@ trait Normalizer  extends Serializable {
 
   val originalTrainingSet:Array[Matrix[Double]]
 
-  val normalizedSamples: Array[Matrix[Double]]
+  val normalizedSamples: Matrix[Double]
 
   def normalise(x:Matrix[Double]):Matrix[Double]
   def deNormalise(x:Matrix[Double]):Matrix[Double]
