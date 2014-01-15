@@ -29,6 +29,15 @@ case class Particle(min: Array[Double], max: Array[Double]) {
 
 
 
+  def adaptSpeed={
+    velocity.getArray().indices.foreach{
+       i =>{
+         if (math.abs(velocity(i,0))>(max(i)-min(i))*0.25)
+           velocity(i,0) = 0
+       }
+
+    }
+  }
   val limits: Array[Component] =
     (for (n <- 0 until size;
           val b = Component(min(n), max(n))
@@ -36,13 +45,13 @@ case class Particle(min: Array[Double], max: Array[Double]) {
 
 
   for (i <- 0 until size) {
-    pNow.set(i, 0, min(i) + 0.9 * rndGen.nextDouble() * (-min(i) + max(i)))
+    pNow.set(i, 0, min(i) +  rndGen.nextDouble() * (-min(i) + max(i)))
     pBest.set(i, 0, pNow(i, 0))
   }
 
 
   for (i <- 0 until velocity.numberRows) {
-    velocity.set(i, 0, 0.1*rndGen.nextDouble() * (max(i) - min(i)))
+    velocity.set(i, 0, 0.01*rndGen.nextDouble() * (max(i) - min(i)))
   }
 
 
@@ -99,9 +108,10 @@ class SwarmPop(numberOfCluster: Int, numberOfParticlesPerCluster: Int, minLimit:
 
 
   val listOfClusters =
-    (for (i <- 0 until numberOfCluster;
-          val c = Cluster(numberOfParticlesPerCluster, minLimit, maxLimit)
-    ) yield c).toArray
+    (for (i <- 0 until numberOfCluster)
+     yield {
+      Cluster(numberOfParticlesPerCluster, minLimit, maxLimit )
+    }).toArray
 
   computerFitness(true)
 
@@ -174,14 +184,20 @@ class SwarmPop(numberOfCluster: Int, numberOfParticlesPerCluster: Int, minLimit:
               val r2 = randGen.nextDouble()
               val r3 = randGen.nextDouble()
 
-              val  newv =
-                particle.velocity * w +
+
+
+
+
+              particle.velocity  =
+                (particle.velocity +
                   (particle.pBest - particle.pNow) * r1 * c1 +
-                  (gBest.pBest  - particle.pNow) * r2 * c2 +
-                  (cluster.clusterBestParticle.pBest - particle.pNow) * r3 * c3
+                  /*(gBest.pBest  - particle.pNow) * r2 * c2 + */
+                  (cluster.clusterBestParticle.pBest - particle.pNow) * r3 * c3)
 
+              import org.fjn.matrix.Scalar
+              import org.fjn.matrix.Scalar2MatrixConversions._
+              particle.velocity  =  particle.velocity * w
 
-              particle.velocity = particle.velocity + newv;
               particle.pNow = particle.pNow + particle.velocity
               ////
               //Todo: the particle must stay in boundaries, implement here bouncing algorithm

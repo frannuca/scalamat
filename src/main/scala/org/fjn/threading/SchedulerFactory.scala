@@ -5,12 +5,7 @@ import akka.routing.RoundRobinRouter
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable
 
-/**
- * Created by fran on 08.12.13.
- */
-
 trait Semaphore{
-
   def waitFor(timeMs:Int):Unit
 }
 
@@ -43,8 +38,11 @@ object SchedulerFactory {
 
 }
 
-class Scheduler[A,B](action:(A)=>B,numberOfWorker:Int,listener:ActorRef) extends Actor{
+class Scheduler[A:Manifest,B:Manifest](action:(A)=>B,numberOfWorker:Int,listener:ActorRef) extends Actor{
 
+
+  val mA = implicitly[Manifest[A]]
+  val mB = implicitly[Manifest[B]]
 
   val taskRouter = context.actorOf(
     Props(classOf[Worker[A,B]],action,listener)

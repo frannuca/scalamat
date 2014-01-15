@@ -2,9 +2,8 @@ package org.fjn.optimization.pso
 
 import org.fjn.optimization.evolutionary.pso.SwarmGA
 
-object testSWARM {
+object testSWARM extends App{
 
-  def main(args:Array[String]) {
 
     val swarm = new SwarmGA(localfitness, 5, 10, List(-10d, -10d,-10d,-10d).toArray, List(10d, 10d,10d,10d).toArray, 0.00, 0.5, 0.25, 0.25)
 
@@ -15,7 +14,7 @@ object testSWARM {
     println(swarm.population.gBest.toString())
     println(swarm.population.gBest.bestFitnessValueNow)
     swarm.population.gBest.bestFitnessValueNow<1e-5
-  }
+
 
   def localfitness(x: Array[Double]): Double = {
 

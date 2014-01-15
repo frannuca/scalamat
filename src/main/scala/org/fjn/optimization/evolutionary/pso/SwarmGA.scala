@@ -72,3 +72,40 @@ case class SwarmGA(pFitness:(Array[Double]) => Double,numberOfCluster:Int,
 
 
 }
+
+object testSWARM extends App{
+
+
+  val swarm = new SwarmGA(localfitness, 10, 15, List(-500d, -500d,-500d,-500d).toArray, List(500d, 500d,500d,500d).toArray, 0.4,0.33, 0.33, 0.33)
+
+  var cont = false
+  for (i <- 0 until 100) {
+    swarm.next();
+    val index = i
+    println(s"BEGIN of iteration ${index}")
+    println(s"${swarm.population.gBest.toString()}")
+    println(s"best fitness = ${swarm.population.gBest.bestFitnessValueNow}")
+    println(s"velocity = ${swarm.population.gBest.velocity}")
+    println("END iteration ${index}")
+    if(!cont){
+
+      readLine() match{
+        case "ok" => cont=true
+        case _=>
+      }
+
+    }
+
+  }
+
+
+  swarm.population.gBest.bestFitnessValueNow<1e-5
+
+
+  def localfitness(x: Array[Double]): Double = {
+
+    val p = 5
+    math.abs((x (0) - p))  + math.abs((x (1) - p))  +  math.abs((x (2) + p)) +  math.abs((x (3) - p) );
+
+  }
+}
