@@ -53,9 +53,24 @@ extends Serializable{
     this
   }
 
+
   def random:Matrix[T1]= {
     val rnd = new Random()
     this.data = this.data.map(x => rnd.nextDouble().asInstanceOf[T1])
+
+    this
+  }
+
+  def randomEye:Matrix[T1]= {
+    val rnd = new Random()
+    this.data = this.data.map(x => rnd.nextDouble().asInstanceOf[T1])
+
+      for(i<- 0 until this.numberCols;
+          j <- 0 until this.numberRows){
+        if(i!=j)
+          this.set(i,j,0.toDouble.asInstanceOf[T1])
+      }
+
     this
   }
 

@@ -51,7 +51,7 @@ case class Particle(min: Array[Double], max: Array[Double]) {
 
 
   for (i <- 0 until velocity.numberRows) {
-    velocity.set(i, 0, 0.01*rndGen.nextDouble() * (max(i) - min(i)))
+    velocity.set(i, 0, rndGen.nextDouble()*(-min(i) + max(i))*0.2)
   }
 
 
@@ -126,12 +126,12 @@ class SwarmPop(numberOfCluster: Int, numberOfParticlesPerCluster: Int, minLimit:
           cluster => {
             cluster.particles.foreach(
               particle => {
-                if (particle.bestFitnessValueNow < cluster.clusterBestParticle.bestFitnessValueNow) {
+                if (particle.bestFitnessValueNow <= cluster.clusterBestParticle.bestFitnessValueNow) {
                   cluster.clusterBestParticle = particle.clone()
                 }
               }
             )
-            if (cluster.clusterBestParticle.bestFitnessValueNow < this.gBest.bestFitnessValueNow) {
+            if (cluster.clusterBestParticle.bestFitnessValueNow <= this.gBest.bestFitnessValueNow) {
               gBest = cluster.clusterBestParticle.clone()
             }
           }
@@ -180,23 +180,22 @@ class SwarmPop(numberOfCluster: Int, numberOfParticlesPerCluster: Int, minLimit:
 
             for (particle <- cluster.particles) {
 
-              val r1 = randGen.nextDouble()
-              val r2 = randGen.nextDouble()
-              val r3 = randGen.nextDouble()
+              val r1 = new Matrix[Double](particle.size,particle.size).randomEye
+              val r2 = new Matrix[Double](particle.size,particle.size).randomEye
+              val r3 = new Matrix[Double](particle.size,particle.size).randomEye
 
 
 
-
-
+                import org.fjn.matrix.Scalar2MatrixConversions._
               particle.velocity  =
-                (particle.velocity +
-                  (particle.pBest - particle.pNow) * r1 * c1 +
-                  /*(gBest.pBest  - particle.pNow) * r2 * c2 + */
-                  (cluster.clusterBestParticle.pBest - particle.pNow) * r3 * c3)
+                (w*particle.velocity +
+                  (r1 *(particle.pBest - particle.pNow))  * c1 +
+                  (r2 * (gBest.pBest  - particle.pNow)) * c2 +
+                  (r3 *(cluster.clusterBestParticle.pBest - particle.pNow)) *  c3)
 
               import org.fjn.matrix.Scalar
               import org.fjn.matrix.Scalar2MatrixConversions._
-              particle.velocity  =  particle.velocity * w
+              //particle.velocity  =  particle.velocity * w
 
               particle.pNow = particle.pNow + particle.velocity
               ////
@@ -242,12 +241,12 @@ class SwarmPop(numberOfCluster: Int, numberOfParticlesPerCluster: Int, minLimit:
                     val limit = p._3
 
                     if (isMax) {
-                      x = limit - 0.3 * (x - limit)
+                      x = limit - 0.5* (x - limit)
                       particle.pNow.set(i, 0, x)
                     }
                     else
                     {
-                      x = limit + 0.3 * (limit - x)
+                      x = limit +  0.5 * (limit - x)
                       particle.pNow.set(i, 0, x)
                     }
                   }
