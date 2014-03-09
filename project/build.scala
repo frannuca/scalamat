@@ -38,7 +38,10 @@ object Dependencies {
   val scalazEffect = "org.scalaz" %% "scalaz-effect" % BuildSettings.scalazVersion
   val scalaztypeLevel = "org.scalaz" %% "scalaz-typelevel" % BuildSettings.scalazVersion
   val scalazBinding = "org.scalaz" %% "scalaz-scalacheck-binding" % BuildSettings.scalazVersion % "test"
+  val log4j = "log4j" % "log4j" % "1.2.14"
+  val scalaTest = "org.scalatest" % "scalatest_2.10" % "2.0" % "test"
 
+  val junit = "junit" % "junit" % "4.11"
 }
 
 object ScalaMatBuild extends Build {
@@ -54,7 +57,7 @@ object ScalaMatBuild extends Build {
     "scalamat",
     file("."),
     settings = buildSettings ++ Seq(resolvers := Seq(typesafe, sonatype1, sonatype2), libraryDependencies ++=
-      Seq(specs2, actors, scalaSwing, apacheMath, jFree, shapeless, scalazCore, scalazEffect, scalaztypeLevel, scalazBinding))
+      Seq(log4j,junit,scalaTest,specs2, actors, scalaSwing, apacheMath, jFree, shapeless, scalazCore, scalazEffect, scalaztypeLevel, scalazBinding))
   ) //aggregate (optimizer,ia, org.fjn.org.fjn.org.fjn.pythia.pricers)
 
 

@@ -8,6 +8,7 @@ import scala.util.Random
 import com.sun.org.apache.bcel.internal.generic.ClassObserver
 import org.fjn.matrix
 
+
 object MatrixExtensions{
 
   implicit def toMatrix(s:Seq[Double])=new{
@@ -27,7 +28,6 @@ extends Serializable{
   val isConfiguredAsRowMajor = isRowMajor
 
   type DataType = T1
-
 
   def <=(x: Seq[T1]): Matrix[T1] = {
     require(x.length == this.numberRows && this.numberCols == 1)
@@ -53,11 +53,9 @@ extends Serializable{
     this
   }
 
-
   def random:Matrix[T1]= {
     val rnd = new Random()
     this.data = this.data.map(x => rnd.nextDouble().asInstanceOf[T1])
-
     this
   }
 
@@ -336,7 +334,6 @@ extends Serializable{
     }
   }
 
-
   def unary_+ : Matrix[T1] = {
     val out = new Matrix[T1](this.numberRows, this.numberCols)
     this.data.copyToArray(out.data, 0)
@@ -501,7 +498,6 @@ extends Serializable{
 
     (eigenMatrixD, eigenMatrixV)
   }
-
 
   def cholesky: Matrix[T1] = {
 

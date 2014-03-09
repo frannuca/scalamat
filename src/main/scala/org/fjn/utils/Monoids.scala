@@ -41,9 +41,4 @@ object testMonoid extends App{
   val r2= Operations.sum(lst2)
   println(r+"\n"+r2)
 
-
-  import scalaz._
-  import std.option._, std.list._
-
-
 }

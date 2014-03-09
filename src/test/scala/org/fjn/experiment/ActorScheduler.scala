@@ -1,18 +1,11 @@
 package org.fjn.experiment
 
-import akka.actor.{ActorRef, ActorSystem, Props, Actor}
+import akka.actor.{ActorRef}
 import scala.collection.mutable.ListBuffer
-import akka.routing.RoundRobinRouter
-import akka.pattern.ask
-import scala.concurrent.Await
-import scala.concurrent.duration.Duration
-import scala.collection.immutable.IndexedSeq
+
 import org.fjn.threading.{Semaphore, SchedulerFactory}
 import scala.collection.mutable
 
-/**
- * Created by fran on 07.12.13.
- */
 
 case class CellResolver(i:Int,j:Int,word:String)
 
@@ -83,51 +76,55 @@ class SoupWorker(matrix:Array[Array[Char]]){
 
 
 
-object SoupLetterSolver extends App{
+class SoupLetterSolver extends AssertionsForJUnit{
 
-  val N=300
-  val M = 300
-  val random = new scala.util.Random
-  val mm: Array[Array[Char]] =
-    (for {
-      i <- 0 until N
-    } yield {
-      (for (j <- 0 until M) yield {
-        (random.nextInt(256)).toChar
+
+  @ Test def checkSoup{
+    val N=300
+    val M = 300
+    val random = new scala.util.Random
+    val mm: Array[Array[Char]] =
+      (for {
+        i <- 0 until N
+      } yield {
+        (for (j <- 0 until M) yield {
+          (random.nextInt(256)).toChar
+        }).toArray
       }).toArray
-    }).toArray
 
 
 
 
-  mm(13)(13) = 's'
-  mm(14)(14) = 'a'
-  mm(15)(15) = 'l'
-  mm(16)(16) = 's'
-  mm(17)(17) = 'a'
+    mm(13)(13) = 's'
+    mm(14)(14) = 'a'
+    mm(15)(15) = 'l'
+    mm(16)(16) = 's'
+    mm(17)(17) = 'a'
 
-  mm(1)(1) = 's'
-  mm(2)(2) = 'a'
-  mm(3)(3) = 'l'
-  mm(4)(4) = 's'
-  mm(5)(5) = 'a'
+    mm(1)(1) = 's'
+    mm(2)(2) = 'a'
+    mm(3)(3) = 'l'
+    mm(4)(4) = 's'
+    mm(5)(5) = 'a'
 
 
-  val soup = new SoupWorker(mm)
+    val soup = new SoupWorker(mm)
 
-  val resolver: (ActorRef, Semaphore, () => Seq[ListBuffer[(Int, Int)]]) =  SchedulerFactory.create(soup.solve,4,N*M)
- for { i<- 0 until N
-        j <- 0 until M}{
-          resolver._1 ! CellResolver(i,j,"salsa")
+    val resolver: (ActorRef, Semaphore, () => Seq[ListBuffer[(Int, Int)]]) =  SchedulerFactory.create(soup.solve,4,N*M)
+    for { i<- 0 until N
+          j <- 0 until M}{
+      resolver._1 ! CellResolver(i,j,"salsa")
+    }
+
+    resolver._2.waitFor(Int.MaxValue)
+
+
+
+
+    resolver._3().filter(lst => lst.length=="salsa".length).foreach(println(_))
+
+    println("applicaiton exiting")
   }
 
-  resolver._2.waitFor(Int.MaxValue)
-
-
-
-
-  resolver._3().filter(lst => lst.length=="salsa".length).foreach(println(_))
-
-  println("applicaiton exiting")
 
 }
