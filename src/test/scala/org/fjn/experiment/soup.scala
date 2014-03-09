@@ -3,7 +3,8 @@ package org.fjn.experiment
 import scala.collection.immutable.IndexedSeq
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.{Await, ExecutionContext, Future}
-
+import org.scalatest.junit.AssertionsForJUnit
+import org.junit.Test
 class Soup(matrix: Array[Array[Char]]) {
   val M = matrix.size
   val N = matrix.head.size
@@ -103,63 +104,66 @@ class Soup(matrix: Array[Array[Char]]) {
 }
 
 
-object test extends App {
+class  test extends AssertionsForJUnit {
 
 
-  val random = new scala.util.Random
-  val mm: Array[Array[Char]] =
-    (for {
-      i <- 0 until 10000
-    } yield {
-      (for (j <- 0 until 10000) yield {
-        (random.nextInt(256)).toChar
+  @Test def testSoupt{
+    val random = new scala.util.Random
+    val mm: Array[Array[Char]] =
+      (for {
+        i <- 0 until 10000
+      } yield {
+        (for (j <- 0 until 10000) yield {
+          (random.nextInt(256)).toChar
+        }).toArray
       }).toArray
-    }).toArray
 
 
-  mm(113)(113) = 's'
-  mm(114)(114) = 'a'
-  mm(115)(115) = 'l'
-  mm(116)(116) = 's'
-  mm(117)(117) = 'a'
-  mm(118)(118) = 'p'
-  mm(119)(119) = 'a'
-  mm(120)(120) = 'r'
-  mm(121)(121) = 'a'
-  mm(122)(122) = 't'
-  mm(123)(123) = 'o'
-  mm(124)(124) = 'd'
-  mm(125)(125) = 'o'
-  mm(126)(126) = 's'
+    mm(113)(113) = 's'
+    mm(114)(114) = 'a'
+    mm(115)(115) = 'l'
+    mm(116)(116) = 's'
+    mm(117)(117) = 'a'
+    mm(118)(118) = 'p'
+    mm(119)(119) = 'a'
+    mm(120)(120) = 'r'
+    mm(121)(121) = 'a'
+    mm(122)(122) = 't'
+    mm(123)(123) = 'o'
+    mm(124)(124) = 'd'
+    mm(125)(125) = 'o'
+    mm(126)(126) = 's'
 
-  mm(13)(13) = 's'
-  mm(14)(14) = 'a'
-  mm(15)(15) = 'l'
-  mm(16)(16) = 's'
-  mm(17)(17) = 'a'
-  mm(17)(18) = 'p'
-  mm(17)(19) = 'a'
-  mm(17)(20) = 'r'
-  mm(17)(21) = 'a'
-  mm(17)(22) = 't'
-  mm(17)(23) = 'o'
-  mm(17)(24) = 'd'
-  mm(17)(25) = 'o'
-  mm(17)(26) = 's'
+    mm(13)(13) = 's'
+    mm(14)(14) = 'a'
+    mm(15)(15) = 'l'
+    mm(16)(16) = 's'
+    mm(17)(17) = 'a'
+    mm(17)(18) = 'p'
+    mm(17)(19) = 'a'
+    mm(17)(20) = 'r'
+    mm(17)(21) = 'a'
+    mm(17)(22) = 't'
+    mm(17)(23) = 'o'
+    mm(17)(24) = 'd'
+    mm(17)(25) = 'o'
+    mm(17)(26) = 's'
 
-  val s = new Soup(mm)
+    val s = new Soup(mm)
 
-  import org.fjn.utils.Timer._
-  for(k <- 0 until 10){
-    time("time single threaded"){
-      val aa = s.containsWordSingleThreaded("salsaparatodos")
-      println(aa.mkString("\n"))
+    import org.fjn.utils.Timer._
+    for(k <- 0 until 10){
+      time("time single threaded"){
+        val aa = s.containsWordSingleThreaded("salsaparatodos")
+        println(aa.mkString("\n"))
+      }
+
+      //    time("time multi threaded"){
+      //      val aa = s.containsWord("salsaparatodos")
+      //      println(aa.mkString("\n"))
+      //    }
     }
 
-//    time("time multi threaded"){
-//      val aa = s.containsWord("salsaparatodos")
-//      println(aa.mkString("\n"))
-//    }
   }
 
 

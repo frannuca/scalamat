@@ -5,7 +5,8 @@ import scala.collection.mutable.ListBuffer
 
 import org.fjn.threading.{Semaphore, SchedulerFactory}
 import scala.collection.mutable
-
+import org.scalatest.junit.AssertionsForJUnit
+import org.junit.Test
 
 case class CellResolver(i:Int,j:Int,word:String)
 
