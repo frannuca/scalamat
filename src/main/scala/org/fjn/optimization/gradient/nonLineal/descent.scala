@@ -5,50 +5,55 @@ import org.fjn.optimization.gradient.differentiation.DifferentialOpsFactory
 import org.apache.commons.math3.optimization.univariate.BrentOptimizer
 import org.apache.commons.math3.analysis.UnivariateFunction
 import org.apache.commons.math3.optimization.GoalType
+import org.fjn.optimization.IOptimizer
+import org.fjn.optimization.MatrixType.DMatrix
 
 
-class GradientDescent(pFunc:(Matrix[Double])=>Double,x0:Matrix[Double],tol:Double=1e-3,gradTol:Double=1e-3) {
+trait GradientDescent extends IOptimizer{
+
+
 
   implicit def toUniFunc(f:(Double)=>Double)={
     new UnivariateFunction {
       def value(x: Double): Double = f(x)
     }
   }
-  import org.fjn.matrix.MatrixExtensions._
-  import org.fjn.matrix.Scalar2MatrixConversions._
 
-  val linearSearchIteration:Int=50
-  val dx =  x0.getArray().map(_ => 1e-6).toSeq.toMatrix
-
-  val diffOp = DifferentialOpsFactory(pFunc,x0.numberRows)
-
-
-  def checkConvergence(x:Matrix[Double],xOld:Matrix[Double],grad:Matrix[Double])={
+  def checkConvergence(x:Matrix[Double],xOld:Matrix[Double],grad:Matrix[Double],tol:Double,gradTol:Double)={
     val dx =((x-xOld)*(x-xOld).transpose)(0,0)
     val nGrad = (grad*grad.transpose)(0,0)
 
     dx<tol || nGrad<gradTol
   }
-  def ++(numberOfIterations:Int):Matrix[Double]={
 
+  def solve(x0:Matrix[Double],functor:(Matrix[Double])=>Double,tolerance:Double,maxIter:Int):(Matrix[Double],Double)={
     var x = x0
     var xOld = x
 
-      for(i<-0 until numberOfIterations){
+    val linearSearchIteration = 50
+    val diffOp = DifferentialOpsFactory(functor,x0.numberRows)
 
-        val g = diffOp.grad(x)
+    var g = diffOp.grad(x)
 
+    for(i<-0 until maxIter if !checkConvergence(x,xOld,g,1e-5,1e-4)){
 
-        val fLinear = (v:Double)=>{pFunc(x-g*v)}
-        val brent = new BrentOptimizer(0.01,1e-3)
-        val lr = brent.optimize(linearSearchIteration,fLinear,GoalType.MINIMIZE,1e-5,1,1e-5)
-        xOld = x
-        x += -g * lr.getPoint
+      val fLinear = (v:Double)=>{functor(x-g*v)}
+      val brent = new BrentOptimizer(0.01,1e-3)
+      val lr = brent.optimize(linearSearchIteration,fLinear,GoalType.MINIMIZE,1e-5,1,1e-5)
+      xOld = x
+      x += -g * lr.getPoint
 
-        if(checkConvergence(x,xOld,g))
-          return x
+      g = diffOp.grad(x)
 
-      }
-    x
+    }
+    (x,functor(x))
   }
+
+
+
+
+
+
+
+
 }

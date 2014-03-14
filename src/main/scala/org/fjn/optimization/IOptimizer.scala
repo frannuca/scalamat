@@ -5,21 +5,10 @@ import org.fjn.matrix.Matrix
 
 object MatrixType {type DMatrix = org.fjn.matrix.Matrix[Double]}
 
-abstract class IOptimizer(function:(MatrixType.DMatrix => Double)) {
+trait IOptimizer {
 
 
   import MatrixType._
+  def solve(x0:DMatrix,functor:(DMatrix)=>Double,tolerance:Double,maxIter:Int):(Matrix[Double],Double)
 
-  private var x0:Option[DMatrix]=None
-  private var numberOfIterations:Int = 0
-  private var tolerance:Option[Double] = None
-
-  def init(initialGuess:DMatrix,tol:Double)        {
-    x0 = Some(initialGuess)
-    numberOfIterations = 0
-    tolerance = Some(tol)
-  }
-
-
-  def ++(nIterations:Int): Seq[(DMatrix, Double)]
 }

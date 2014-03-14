@@ -1,4 +1,4 @@
-package org.fjn.optimization.contraint
+package org.fjn.optimization.constraint
 
 /**
  * Created with IntelliJ IDEA.

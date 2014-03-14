@@ -48,11 +48,12 @@ class ImpliedVolatilitySurface(callPricess:Seq[Point],putPrices:Seq[Point]) {
       case _ => (s:Matrix[Double]) => zeroFunctor_put(s(0,0))(npv,spot,strike,t,T,r)
     }
     import org.fjn.matrix.MatrixExtensions._
-    val gd = new GradientDescent(bs,Seq(0.01).toMatrix)
-    val rVol =gd ++ nIteration
+    val gd = new GradientDescent{
 
-    rVol(0,0)
+    }
+    val rVol = gd.solve(Seq(0.01).toMatrix,bs,1e-3,100)
 
+    rVol._2
   }
 
 }
