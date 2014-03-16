@@ -1,9 +1,17 @@
-package org.fjn.optimization.gradient.nonLineal
+package org.fjn.optimization.gradient.newton
 
-import org.fjn.optimization.gradient.differentiation.{DifferentialOpsFactory, DifferentialOperators}
-import collection.mutable
+import org.fjn.optimization.common.differentiation.{DifferentialOpsFactory, DifferentialOperators}
 import org.fjn.matrix.Matrix
-import org.fjn.optimization.MatrixType.DMatrix
+import org.fjn.optimization.common.{IOptimizerData, IOptimizerSolverBuilder, MatrixType}
+import MatrixType.DMatrix
+
+
+
+sealed trait QNUpdateType
+object QNUPDATE_TYPES{
+  case object  DFPQNUPDATE extends QNUpdateType
+  case object  BFGSQNUPDATE extends QNUpdateType
+}
 
 trait QNUpdate{
   def next(Hk:Matrix[Double],dx:Matrix[Double],dy:Matrix[Double]):Matrix[Double]
@@ -49,16 +57,16 @@ trait QuasiNewton  {
 
   self:QNUpdate =>
 
-  val x0:Matrix[Double]
-  var alpha:Double
-  val pFunc:(Matrix[Double])=>Double
-  val tolerance:Seq[Double]
+  val alpha0:Double
+  def solve(x0:Matrix[Double],data:IOptimizerData):(Matrix[Double],Double)={
 
-  val evaluate = (x:DMatrix) => pFunc(x)
-  val ops= DifferentialOpsFactory(pFunc(_) ,x0.numberRows)
+    var alpha = alpha0
 
-  def ++(nIter:Int) : Matrix[Double]={
 
+    val tolerance = x0.getArray().indices.toSeq.map( _ =>data.tolerance)
+
+
+    val ops= DifferentialOpsFactory( data.cost ,x0.numberRows)
 
     var Hk = new Matrix[Double](x0.numberRows,x0.numberRows)
     Hk.eye
@@ -72,7 +80,7 @@ trait QuasiNewton  {
     var grad1 = ops.grad(x)
 
     var counter = 0
-    (0 until nIter).foreach(i =>{
+    (0 until data.maxIterations).foreach(i =>{
 
       val xOld = x
       val HkOld = Hk
@@ -83,16 +91,16 @@ trait QuasiNewton  {
       dx = Hk*grad1*(-alpha)
 
 
-      val oldFunc = evaluate(x)
+      val oldFunc = data.cost(x)
 
       x = x + dx
-      val eval = evaluate(x)
+      val eval = data.cost(x)
       if (eval>oldFunc || eval.isNaN){
-         x = xOld
-         Hk = HkOld
-         dx = dxOld
-         alpha = alpha * 0.9
-         counter = counter + 1
+        x = xOld
+        Hk = HkOld
+        dx = dxOld
+        alpha = alpha * 0.9
+        counter = counter + 1
 
       }else{
         minX = x.clone()
@@ -105,11 +113,21 @@ trait QuasiNewton  {
 
     })
 
-    x
-
-
-  }
-
+    (x,data.cost(x))
+}
 }
 
 
+object QuasiNewtonSolver{
+  def apply(x0:Matrix[Double],f:(Matrix[Double]=>Double),tolerance:Double,maxIter:Int,t:QNUpdateType,alpha:Double)={
+
+    import QNUPDATE_TYPES._
+
+    val qnewton1 = t match{
+      case DFPQNUPDATE =>  new  {override val alpha0 = alpha} with QuasiNewton with DFPQNUpdate
+      case BFGSQNUPDATE => new  {override val alpha0 = alpha} with QuasiNewton with BFGSQNUpdate
+      case _ => throw new Throwable("Invalid Hessian update type")
+    }
+    IOptimizerSolverBuilder().withCostFunction(f).withMaxIterations(maxIter).withSolver(qnewton1.solve).build
+  }
+}

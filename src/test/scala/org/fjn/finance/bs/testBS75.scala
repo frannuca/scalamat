@@ -1,7 +1,7 @@
 //package org.fjn.finance.bs
 //
 //import org.fjn.matrix.Matrix
-//import org.fjn.optimization.gradient.nonLineal.{GradientDescent, DFPQNUpdate, QuasiNewton}
+//import org.fjn.optimization.newton.newton.{GradientDescent, DFPQNUpdate, QuasiNewton}
 //import org.apache.commons.math3.optimization.univariate.{UnivariatePointValuePair, BrentOptimizer}
 //import org.apache.commons.math3.analysis.UnivariateFunction
 //import org.apache.commons.math3.optimization.GoalType

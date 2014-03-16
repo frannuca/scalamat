@@ -31,6 +31,8 @@ private   class XYSeriesDemo(title:String,x:Seq[Double],y:Seq[Double]) extends A
     false
   )
 
+  data.setAutoWidth(true)
+
   val chartPanel = new ChartPanel(chart)
   chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
   setContentPane(chartPanel);

@@ -1,4 +1,4 @@
-package org.fjn.optimization.gradient.differentiation
+package org.fjn.optimization.common.differentiation
 
 import org.fjn.matrix.Matrix
 import collection.immutable.IndexedSeq
