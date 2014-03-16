@@ -54,7 +54,12 @@ class testQuasiNewton  extends AssertionsForJUnit{
     val sig2 =                        xfinal2._1.transpose* c * xfinal2._1
     println(s"portfolio x =${re1}. Sigam = $sig1")
     println(s"portfolio x =${re2}. Sigam = $sig2")
+
+
+    org.junit.Assert.assertTrue(re1(0,0) < re2(0,0) && sig1(0,0) < sig2(0,0))
   }
+
+
 
 
 
