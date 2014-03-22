@@ -544,6 +544,18 @@ extends Serializable{
     }).toSeq
   }
 
+
+  def setSubMatrix(sub:Matrix[T1],i:Int,j:Int){
+    require(j + sub.numberCols < numberCols)
+    require(i + sub.numberRows < numberRows)
+
+    for(n <- 0 until sub.numberRows;
+        m <- 0 until sub.numberCols){
+      this(i+n,j+m)=sub(n,m)
+    }
+
+  }
+
 }
 
 
