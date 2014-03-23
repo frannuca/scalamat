@@ -22,7 +22,7 @@ class NewtopStepECTest extends AssertionsForJUnit{
     (x.transpose * x)(0,0)
   }
   @Test def testKKTEqualConstraintWithFeasibleStartPoint{
-    val opt = new NewtopStepEC(A,b,dim,cost)
+    val opt = new NewtonStepWithFeasibleStart(A,b,dim,cost)
 
     val (x,fx) = opt.solve(x0,epsilon)
 
