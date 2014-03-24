@@ -7,7 +7,7 @@ trait DifferentialOperators{
 
   val pFunc:(org.fjn.matrix.Matrix[Double])=>Double
   val size:Int
-  val dx = 1e-6
+  val dx = 1e-5
 
   val dOffsets: IndexedSeq[Matrix[Double]] = (0 until size).map(i =>{
     val dd = new Matrix[Double](size,1)

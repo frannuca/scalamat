@@ -37,7 +37,7 @@ trait  NewtopStepEC {
     kkt.invert
 
 
-    val left_side = new Matrix[Double](gradf.numberRows,A.numberRows)
+    val left_side = new Matrix[Double](gradf.numberRows+A.numberRows,1)
     left_side.setSubMatrix(-1.0 * gradf,0,0)
 
     nu.map(_=>{
